@@ -1,0 +1,29 @@
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "reduxkotlin"
+            name "ReduxKotlin.org"
+            organization "ReduxKotlin.org"
+            organizationUrl "http://www.reduxkotlin.org"
+        }
+    }
+
+    scm {
+        url "https://github.com/reduxkotlin/redux-kotlin-thunk"
+    }
+}
+
+project.ext.configureMavenCentralMetadata = { pom ->
+    def root = asNode()
+    root.appendNode('name', project.name)
+    root.appendNode('description', 'Thunk implementation for async actions.')
+    root.appendNode('url', 'https://github.com/reduxkotlin/redux-kotlin-thunk')
+    root.children().last() + pomConfig
+}
