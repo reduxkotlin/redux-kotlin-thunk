@@ -14,7 +14,7 @@
 A redux Thunk implementation for async action dispatch. 
 
 ```
-    applymiddleware(thunk)
+    val store = createStore(::reducer, applymiddleware(thunk))
     
     ...
     
