@@ -1,5 +1,7 @@
 # Redux-Kotlin
 
+[![CircleCI](https://circleci.com/gh/reduxkotlin/redux-kotlin-thunk.svg?style=svg)](https://circleci.com/gh/reduxkotlin/redux-kotlin-thunk)
+
 
 ![badge][badge-android]
 ![badge][badge-native]
