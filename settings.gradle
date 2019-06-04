@@ -9,7 +9,7 @@ pluginManagement {
 }
 
 include ':lib'
-rootProject.name='Redux-Kotlin'
+rootProject.name='Redux-Kotlin-thunk'
 
 
 rootProject.name = 'test'

@@ -17,8 +17,8 @@ A redux Thunk implementation for async action dispatch.
     
     ...
     
-    fun fetchFoo(store: Store) {
-        store.dispatch(FetchingFooAction)
+    fun fetchFoo(dispatch: Dispatcher) {
+        dispatch(FetchingFooAction)
         launch {
             val result = api.foo()
             if (result.isSuccessful()) {
