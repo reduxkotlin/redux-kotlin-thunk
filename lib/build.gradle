@@ -6,8 +6,7 @@ apply plugin: 'kotlin-multiplatform'
 
 archivesBaseName = 'redux-kotlin-thunk'
 
-group 'org.reduxkotli' +
-        'n'
+group 'org.reduxkotlin'
 version '0.2'
 
 kotlin {
@@ -134,7 +133,7 @@ apply from: rootProject.file('gradle/publish.gradle')
 publishing {
     publications.all {
         // Rewrite all artifacts from using the project name to just 'runtime'.
-        artifactId = artifactId.replace(project.name, 'redux-kotlin')
+        artifactId = artifactId.replace(project.name, 'redux-kotlin-thunk')
     }
 }
 
