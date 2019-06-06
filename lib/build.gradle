@@ -7,7 +7,7 @@ apply plugin: 'kotlin-multiplatform'
 archivesBaseName = 'redux-kotlin-thunk'
 
 group 'org.reduxkotlin'
-version '0.2.1'
+version '0.2.3'
 
 kotlin {
     jvm()
