@@ -19,7 +19,7 @@ A redux Thunk implementation for async action dispatch.
     
     ...
     
-    fun fetchFoo(dispatch: Dispatcher) {
+    fun fetchFoo(dispatch: Dispatcher, getState: GetState, extraArg: Any?) {
         dispatch(FetchingFooAction)
         launch {
             val result = api.foo()
@@ -31,10 +31,22 @@ A redux Thunk implementation for async action dispatch.
         } 
     }
     
+    val fetchBar: Thunk = {dispatch, getState, extraArgument -> 
+        dispatch(FetchingBarAction)
+        launch {
+            val result = api.bar()
+            if (result.isSuccessful()) {
+                dispatch(FetchBarSuccess(result.payload)
+            } else {
+                dispatch(FetchBarFailure(result.message)
+            } 
+        } 
+    
     ...
     
     fun bar() {
        dispatch(::fetchFoo) 
+       dispatch(fetchBar)
     }
 ```
 
@@ -47,7 +59,7 @@ kotlin {
   sourceSets {
         commonMain { //   <---  name may vary on your project
             dependencies {
-                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2"
+                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2.3"
             }
         }
  }
@@ -55,7 +67,7 @@ kotlin {
 
 For JVM only:
 ```
-  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2"
+  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2.3"
 ```
 
 [badge-android]: http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat
