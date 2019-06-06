@@ -7,12 +7,10 @@ apply plugin: 'kotlin-multiplatform'
 archivesBaseName = 'redux-kotlin-thunk'
 
 group 'org.reduxkotlin'
-version '0.2'
+version '0.2.1'
 
 kotlin {
     jvm()
-    /*  JS disabled for now - need workaround for JS not supporting
-    /*  implementing function types on class for StoreEnhancerWrapper
     js() {
         [compileKotlinJs, compileTestKotlinJs].each { configuration ->
             configuration.kotlinOptions {
@@ -22,9 +20,6 @@ kotlin {
             }
         }
     }
-
-     */
-
     iosArm64("ios")
     iosX64("iosSim")
     macosX64("macos")
@@ -39,7 +34,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin("stdlib-common")
-                implementation "org.reduxkotlin:redux-kotlin:0.2"
+                implementation "org.reduxkotlin:redux-kotlin:0.2.1"
             }
         }
         commonTest {
@@ -71,7 +66,6 @@ kotlin {
                 runtimeOnly 'org.jetbrains.kotlin:kotlin-reflect'
             }
         }
-        /*
         jsMain {
             kotlin.srcDir('src/jsMain/kotlin')
             dependencies {
@@ -93,17 +87,9 @@ kotlin {
             }
         }
 
-         */
-        nativeMain {
-            kotlin.srcDir('src/nativeMain/kotlin')
-        }
-
         iosSimMain.dependsOn iosMain
         iosSimTest.dependsOn iosTest
 
-        configure([targets.ios, targets.iosSim, targets.macos, targets.win, targets.linArm32, targets.linMips32, targets.linMipsel32, targets.lin64]) {
-            compilations.main.source(sourceSets.nativeMain)
-        }
     }
 }
 

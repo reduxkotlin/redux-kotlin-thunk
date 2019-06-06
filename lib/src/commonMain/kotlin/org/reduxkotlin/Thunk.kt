@@ -1,22 +1,21 @@
 package org.reduxkotlin
 
-
-typealias Thunk = (Dispatcher) -> Any
-
-
-fun createThunkMiddleware(store: Store)=
-    { dispatch: Dispatcher ->
-        { action: Any ->
-            if (action is Function<*>) {
-                try {
-                    (action as Thunk)(dispatch)
-                } catch (e: Exception) {
+typealias Thunk = (Dispatcher, GetState, Any?) -> Any
+fun createThunkMiddleware(extraArgument: Any? = null): Middleware =
+    { store ->
+        { next: Dispatcher ->
+            { action: Any ->
+                if (action is Function<*>) {
+                    try {
+                        (action as Thunk)(store.dispatch, store.getState, extraArgument)
+                    } catch (e: Exception) {
 //                    Logger.d("Dispatching functions must use type Thunk: " + e.message)
+                    }
+                } else {
+                    next(action)
                 }
-            } else {
-                dispatch(action)
             }
         }
     }
 
-val thunk = ::createThunkMiddleware
+val thunk = createThunkMiddleware()
