@@ -1,7 +1,8 @@
 package org.reduxkotlin
 
 typealias Thunk = (Dispatcher, GetState, Any?) -> Any
-fun createThunkMiddleware(extraArgument: Any? = null): Middleware =
+typealias ThunkMiddleware = Middleware
+fun createThunkMiddleware(extraArgument: Any? = null): ThunkMiddleware =
     { store ->
         { next: Dispatcher ->
             { action: Any ->
@@ -19,3 +20,5 @@ fun createThunkMiddleware(extraArgument: Any? = null): Middleware =
     }
 
 val thunk = createThunkMiddleware()
+
+fun ThunkMiddleware.withExtraArgument(arg: Any?) = createThunkMiddleware(arg)
