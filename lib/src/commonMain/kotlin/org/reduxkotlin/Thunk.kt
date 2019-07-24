@@ -10,6 +10,7 @@ fun createThunkMiddleware(extraArgument: Any? = null): ThunkMiddleware =
                     try {
                         (action as Thunk)(store.dispatch, store.getState, extraArgument)
                     } catch (e: Exception) {
+                        throw IllegalArgumentException()
 //                    Logger.d("Dispatching functions must use type Thunk: " + e.message)
                     }
                 } else {
