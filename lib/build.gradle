@@ -7,7 +7,7 @@ apply plugin: 'kotlin-multiplatform'
 archivesBaseName = 'redux-kotlin-thunk'
 
 group 'org.reduxkotlin'
-version '0.2.4'
+version '0.2.5'
 
 kotlin {
     jvm()
@@ -20,15 +20,41 @@ kotlin {
             }
         }
     }
-    iosArm64("ios")
-    iosX64("iosSim")
-    macosX64("macos")
-    mingwX64("win")
-    wasm32("wasm")
-    linuxArm32Hfp("linArm32")
-    linuxMips32("linMips32")
-    linuxMipsel32("linMipsel32")
-    linuxX64("lin64")
+    //-module-name args are needed to prevent circular deps bug on native platforms
+    iosArm64("ios") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+
+    iosX64("iosSim") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+    macosX64("macos") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+
+    mingwX64("win") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+
+    wasm32("wasm") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+
+    linuxArm32Hfp("linArm32") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+
+    linuxMips32("linMips32") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+
+    linuxMipsel32("linMipsel32") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
+
+    linuxX64("lin64") {
+        compilations.main.extraOpts.addAll(["-module-name", "thunk"])
+    }
 
     sourceSets {
         commonMain {
