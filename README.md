@@ -13,25 +13,30 @@
 ![badge][badge-wasm]
 
 A redux Thunk implementation for async action dispatch. 
+Thunk implement must implement the `Thunk` interface, which only has one dispatch method.
+A more friendly way to create a thunk is with the `createThunk` function.  Both are illustrated below:
 
 ```
     val store = createStore(::reducer, applymiddleware(thunk))
     
     ...
     
-    fun fetchFoo(dispatch: Dispatcher, getState: GetState, extraArg: Any?) {
-        dispatch(FetchingFooAction)
-        launch {
-            val result = api.foo()
-            if (result.isSuccessful()) {
-                dispatch(FetchFooSuccess(result.payload)
-            } else {
-                dispatch(FetchFooFailure(result.message)
+    class FooThunk: Thunk
+    
+        override fun dispatch(dispatch: Dispatcher, getState: GetState, extraArg: Any?) {
+            dispatch(FetchingFooAction)
+            launch {
+                val result = api.foo()
+                if (result.isSuccessful()) {
+                    dispatch(FetchFooSuccess(result.payload)
+                } else {
+                    dispatch(FetchFooFailure(result.message)
+                } 
             } 
-        } 
+        }
     }
     
-    val fetchBar: Thunk = {dispatch, getState, extraArgument -> 
+    val fetchBar = createThunk {dispatch, getState, extraArgument -> 
         dispatch(FetchingBarAction)
         launch {
             val result = api.bar()
@@ -45,7 +50,7 @@ A redux Thunk implementation for async action dispatch.
     ...
     
     fun bar() {
-       dispatch(::fetchFoo) 
+       dispatch(FooThunk()::dispatch) 
        dispatch(fetchBar)
     }
 ```
@@ -59,7 +64,7 @@ kotlin {
   sourceSets {
         commonMain { //   <---  name may vary on your project
             dependencies {
-                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2.5"
+                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2.6"
             }
         }
  }
@@ -67,7 +72,7 @@ kotlin {
 
 For JVM only:
 ```
-  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2.5"
+  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2.6"
 ```
 
 [badge-android]: http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat
