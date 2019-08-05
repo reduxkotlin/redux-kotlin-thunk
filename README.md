@@ -17,13 +17,13 @@ Thunk implement must implement the `Thunk` interface, which only has one dispatc
 A more friendly way to create a thunk is with the `createThunk` function.  Both are illustrated below:
 
 ```
-    val store = createStore(::reducer, applymiddleware(thunk))
+    val store = createStore(::reducer, applymiddleware(createThunkMiddleware()))
     
     ...
     
-    class FooThunk: Thunk
+    class FooThunk: Thunk<State> {
     
-        override fun dispatch(dispatch: Dispatcher, getState: GetState, extraArg: Any?) {
+        override fun dispatch(dispatch: Dispatcher, getState: GetState<State>, extraArg: Any?) {
             dispatch(FetchingFooAction)
             launch {
                 val result = api.foo()
@@ -36,7 +36,7 @@ A more friendly way to create a thunk is with the `createThunk` function.  Both 
         }
     }
     
-    val fetchBar = createThunk {dispatch, getState, extraArgument -> 
+    val fetchBar = createThunk<State> {dispatch, getState, extraArgument -> 
         dispatch(FetchingBarAction)
         launch {
             val result = api.bar()
@@ -64,7 +64,7 @@ kotlin {
   sourceSets {
         commonMain { //   <---  name may vary on your project
             dependencies {
-                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2.6"
+                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2.7"
             }
         }
  }
@@ -72,7 +72,7 @@ kotlin {
 
 For JVM only:
 ```
-  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2.6"
+  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2.7"
 ```
 
 [badge-android]: http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat
