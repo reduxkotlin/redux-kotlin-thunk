@@ -3,6 +3,7 @@ buildscript {
 
     repositories {
         google()
+        mavenCentral()
         maven { url 'https://dl.bintray.com/jetbrains/kotlin-native-dependencies' }
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
@@ -19,10 +20,10 @@ apply from: "$rootDir/gradle/dependencies.gradle"
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://dl.bintray.com/spekframework/spek-dev" }
-
+        jcenter()
     }
 
     group = GROUP

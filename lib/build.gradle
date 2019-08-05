@@ -7,7 +7,7 @@ apply plugin: 'kotlin-multiplatform'
 archivesBaseName = 'redux-kotlin-thunk'
 
 group 'org.reduxkotlin'
-version '0.2.6'
+version '0.2.7'
 
 kotlin {
     jvm()
@@ -60,7 +60,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin("stdlib-common")
-                implementation "org.reduxkotlin:redux-kotlin:0.2.4"
+                implementation "org.reduxkotlin:redux-kotlin:$project.versions.redux"
             }
         }
         commonTest {
