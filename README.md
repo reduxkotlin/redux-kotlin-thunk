@@ -64,7 +64,7 @@ kotlin {
   sourceSets {
         commonMain { //   <---  name may vary on your project
             dependencies {
-                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2.7"
+                implementation "org.reduxkotlin:redux-kotlin-thunk:0.2.8"
             }
         }
  }
@@ -72,7 +72,7 @@ kotlin {
 
 For JVM only:
 ```
-  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2.7"
+  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.2.8"
 ```
 
 [badge-android]: http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat
