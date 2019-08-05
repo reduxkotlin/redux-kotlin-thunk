@@ -1,10 +1,4 @@
-package com.willowtreeapps.common.external
-
-import org.reduxkotlin.Dispatcher
-import org.reduxkotlin.GetState
-import org.reduxkotlin.Middleware
-import org.reduxkotlin.Store
-
+package org.reduxkotlin
 
 /**
  * Thunk middleware for async action dispatches.
