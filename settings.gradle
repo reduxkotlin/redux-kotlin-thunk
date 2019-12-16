@@ -14,5 +14,4 @@ rootProject.name='Redux-Kotlin-thunk'
 
 rootProject.name = 'test'
 enableFeaturePreview('GRADLE_METADATA')
-enableFeaturePreview('STABLE_PUBLISHING')
 
