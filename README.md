@@ -72,7 +72,7 @@ kotlin {
 
 For JVM only:
 ```
-  implementation "org.reduxkotlin:redux-kotlin-jvm-thunk:0.3.1"
+  implementation "org.reduxkotlin:redux-kotlin-thunk-jvm:0.3.1"
 ```
 
 [badge-android]: http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat
