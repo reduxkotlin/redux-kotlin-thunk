@@ -13,45 +13,32 @@
 ![badge][badge-wasm]
 
 A redux Thunk implementation for async action dispatch. 
-Thunk implement must implement the `Thunk` interface, which only has one dispatch method.
-A more friendly way to create a thunk is with the `createThunk` function.  Both are illustrated below:
+A Thunk must conform to the `Thunk` typealias, which is a function with 3 paramaters: `dispatch`, `getState`, & `extraArg`.
+A common use is to make a function return a `Thunk`.  This allows passing params to the function.
+
+NOTE: Before v0.4.0 `Thunk` was an interface.  Kotlin 1.3.70 fixed a bug which allows using a typealias instead, which is more concise and closer to the JS implementation.
 
 ```
     val store = createStore(::reducer, applymiddleware(createThunkMiddleware()))
     
     ...
     
-    class FooThunk: Thunk<State> {
-    
-        override fun dispatch(dispatch: Dispatcher, getState: GetState<State>, extraArg: Any?) {
-            dispatch(FetchingFooAction)
-            launch {
-                val result = api.foo()
-                if (result.isSuccessful()) {
-                    dispatch(FetchFooSuccess(result.payload)
-                } else {
-                    dispatch(FetchFooFailure(result.message)
-                } 
-            } 
-        }
-    }
-    
-    val fetchBar = createThunk<State> {dispatch, getState, extraArgument -> 
-        dispatch(FetchingBarAction)
+    fun fooThunk(query: String): Thunk<AppState> = { dispatch, getState, extraArg ->
+        dispatch(FetchingFooAction)
         launch {
-            val result = api.bar()
+            val result = api.foo(query)
             if (result.isSuccessful()) {
-                dispatch(FetchBarSuccess(result.payload)
+                dispatch(FetchFooSuccess(result.payload)
             } else {
-                dispatch(FetchBarFailure(result.message)
-            } 
-        } 
-    
+                dispatch(FetchFooFailure(result.message)
+            }
+        }  
+    }
+ 
     ...
     
     fun bar() {
-       dispatch(FooThunk()::dispatch) 
-       dispatch(fetchBar)
+       dispatch(fooThunk("my query")) 
     }
 ```
 
