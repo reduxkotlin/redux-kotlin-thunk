@@ -27,12 +27,13 @@ fun <State> createThunkMiddleware(extraArgument: Any? = null): ThunkMiddleware<S
         { next: Dispatcher ->
             { action: Any ->
                 if (action is Function<*>) {
-                    try {
-                        (action as Thunk<*>)(store.dispatch, store.getState, extraArgument)
-                    } catch (e: Exception) {
-                        throw IllegalArgumentException()
-//                    Logger.d("Dispatching functions must use type Thunk: " + e.message)
-                    }
+                    @Suppress("UNCHECKED_CAST")
+                    val thunk = try {
+                            (action as Thunk<*>)
+                        } catch (e: ClassCastException) {
+                            throw IllegalArgumentException("Dispatching functions must use type Thunk:", e)
+                        }
+                    thunk(store.dispatch, store.getState, extraArgument)
                 } else {
                     next(action)
                 }
