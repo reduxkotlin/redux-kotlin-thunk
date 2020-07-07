@@ -19,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: redux-kotlin-thunk_test_reports
-          path: redux-kotlin-thunk/build/reports/tests
+          path: build/reports/tests
