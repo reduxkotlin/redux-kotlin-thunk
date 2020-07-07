@@ -24,5 +24,5 @@ jobs:
       - name: Archive redux-kotlin-threadsafe Test Reports
         uses: actions/upload-artifact@v1
         with:
-          name: redux-kotlin-threadsafe_test_reports
-          path: redux-kotlin-threadsafe/build/reports/tests
+          name: redux-kotlin-thunk_test_reports
+          path: redux-kotlin-thunk/build/reports/tests

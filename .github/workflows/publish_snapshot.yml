@@ -16,31 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Publish macOS artifacts Snapshot
-      id: publish-macos
-      if: matrix.os == 'macos-latest'
-      env:
-        SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
-        SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
-        GPG_SECRET: ${{ secrets.GPG_SECRET }}
-        GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
-        SNAPSHOT: 'TRUE'
-      run: ./gradlew publish
-
-    - name: Publish windows artifacts Snapshot
-      id: publish-win
-      if: matrix.os == 'windows-latest'
-      env:
-        SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
-        SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
-        GPG_SECRET: ${{ secrets.GPG_SECRET }}
-        GPG_SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
-        SNAPSHOT: 'TRUE'
-      run: ./gradlew publish
-
-    - name: Publish linux artifacts Snapshot
-      id: publish-linux
-      if: matrix.os == 'ubuntu-latest'
+    - name: Publish snapshot artifacts
       env:
         SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
         SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
