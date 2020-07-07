@@ -3,7 +3,7 @@ ext.versions = [
         dokka           : '0.9.17',
         spek            : '2.1.0-alpha.0.9+3d5d865',
         atrium          : '0.8.0',
-        redux           : '0.5.5-MAC-SNAPSHOT'
+        redux           : '0.5.3'
 ]
 
 ext.deps = [

@@ -8,10 +8,7 @@ pluginManagement {
     }
 }
 
-include ':lib'
+include ':redux-kotlin-thunk'
 rootProject.name='Redux-Kotlin-thunk'
 
-
-rootProject.name = 'test'
 enableFeaturePreview('GRADLE_METADATA')
-
