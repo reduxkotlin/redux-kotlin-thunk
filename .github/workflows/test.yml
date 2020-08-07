@@ -8,21 +8,13 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
     steps:
       - uses: actions/checkout@v2
 
       - name: Test
-        run: ./gradlew jvmTest
-
-      - name: Archive redux-kotlin Test Reports
-        uses: actions/upload-artifact@v1
-        with:
-          name: redux-kotlin_test_reports
-          path: redux-kotlin/build/reports/tests
-
-      - name: Archive redux-kotlin-threadsafe Test Reports
-        uses: actions/upload-artifact@v1
-        with:
-          name: redux-kotlin-thunk_test_reports
-          path: redux-kotlin-thunk/build/reports/tests
+        run: ./gradlew build
