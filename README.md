@@ -18,7 +18,7 @@ A common use is to make a function return a `Thunk`.  This allows passing params
 NOTE: Before v0.4.0 `Thunk` was an interface.  Kotlin 1.3.70 fixed a bug which allows using a typealias instead, which is more concise and closer to the JS implementation.
 
 ```
-    val store = createStore(::reducer, applymiddleware(createThunkMiddleware()))
+    val store = createStore(::reducer, applyMiddleware(createThunkMiddleware()))
     
     ...
     
