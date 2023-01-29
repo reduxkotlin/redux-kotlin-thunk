@@ -1,0 +1,63 @@
+config:
+  warningsAsErrors: true
+
+complexity:
+  active: true
+
+comments:
+  active: true
+  CommentOverPrivateFunction:
+    active: false
+  CommentOverPrivateProperty:
+    active: false
+  DeprecatedBlockTag:
+    active: true
+    excludes: [ "**/src/*Test/**", "**/examples/**", "**/build-conventions/**" ]
+    ignoreAnnotated: [ kotlin.Deprecated ]
+  OutdatedDocumentation:
+    active: true
+    excludes: [ "**/src/*Test/**", "**/examples/**", "**/build-conventions/**" ]
+    ignoreAnnotated: [ kotlin.Deprecated ]
+    allowParamOnConstructorProperties: false
+  UndocumentedPublicClass:
+    active: true
+    excludes: [ "**/src/*Test/**", "**/examples/**", "**/build-conventions/**" ]
+    ignoreAnnotated: [ kotlin.Deprecated ]
+  UndocumentedPublicFunction:
+    active: true
+    excludes: [ "**/src/*Test/**", "**/examples/**", "**/build-conventions/**" ]
+    ignoreAnnotated: [ kotlin.Deprecated ]
+  UndocumentedPublicProperty:
+    active: true
+    ignoreAnnotated: [ kotlin.Deprecated ]
+    excludes: [ "**/src/*Test/**", "**/examples/**", "**/build-conventions/**" ]
+
+naming:
+  InvalidPackageDeclaration:
+    active: false
+  MatchingDeclarationName:
+    active: false
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][_a-zA-Z0-9]*'
+
+style:
+  ForbiddenComment:
+    active: false
+  WildcardImport:
+    active: false
+  UnnecessaryAbstractClass:
+    active: false
+  MaxLineLength:
+    active: false
+  MagicNumber:
+    active: false
+
+formatting:
+  Filename:
+    active: false
+  NoWildcardImports:
+    active: false
+  Indentation:
+    indentSize: 4
+  FinalNewline:
+    active: true

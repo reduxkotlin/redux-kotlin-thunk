@@ -1,14 +1,11 @@
 *.iml
-.gradle
+.gradle/
+lint.xml
 /local.properties
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea
+.idea/
 /iOS/NameGame/.idea/
 .DS_Store
-/build
-/common/build
+*.hprof
 /captures
 .externalNativeBuild
 node_modules/
@@ -23,7 +20,6 @@ node_modules/
 ## Build generated
 build/
 DerivedData/
-
 
 ## Various settings
 *.pbxuser
