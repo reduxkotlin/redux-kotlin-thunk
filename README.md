@@ -76,3 +76,4 @@ implementation("org.reduxkotlin:redux-kotlin-thunk-jvm:_")
 [badge-windows]: http://img.shields.io/badge/platform-windows-informational.svg?style=flat
 [badge-mac]: http://img.shields.io/badge/platform-macos-lightgrey.svg?style=flat
 [badge-mac]: http://img.shields.io/badge/platform-macos-lightgrey.svg?style=flat
+[slack]: https://kotlinlang.slack.com/archives/C8A8G5F9Q
