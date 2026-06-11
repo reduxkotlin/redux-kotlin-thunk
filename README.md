@@ -1,3 +1,5 @@
+> ⚠️ **This repository is archived — moved to the [redux-kotlin monorepo](https://github.com/reduxkotlin/redux-kotlin).** The `redux-kotlin-thunk` module lives there now and continues to be published under the same coordinates `org.reduxkotlin:redux-kotlin-thunk`. No consumer action needed.
+
 # Redux-Kotlin-Thunk
 
 [![Release](https://github.com/reduxkotlin/redux-kotlin-thunk/actions/workflows/release.yml/badge.svg)](https://github.com/reduxkotlin/redux-kotlin-thunk/actions/workflows/release.yml)
